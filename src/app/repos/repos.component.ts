@@ -9,7 +9,7 @@ import { TokenService } from '../token.service';
 })
 export class ReposComponent implements OnInit {
   uri = 'https://api.github.com/user/repos';
-  repos: object;
+  repos: any = [];
   constructor(private http: HttpClient, private AuthService: TokenService) {}
 
   ngOnInit() {
@@ -37,5 +37,13 @@ export class ReposComponent implements OnInit {
       .catch(err => {
         console.log(err);
       });
+  }
+  copyToClipboard(item) {
+    document.addEventListener('copy', (e: ClipboardEvent) => {
+      e.clipboardData.setData('text/plain', item);
+      e.preventDefault();
+      document.removeEventListener('copy', null);
+    });
+    document.execCommand('copy');
   }
 }

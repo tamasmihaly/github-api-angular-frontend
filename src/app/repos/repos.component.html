@@ -1,5 +1,25 @@
-<p>
-  repos works!
-</p>
+<div class="container">
+  <h1>Your github repositories:</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Clone URL</th>
+        <th scope="col">Updated at</th>
+        <th scope="col">Private</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let repo of repos">
+        <td>{{repo.id}}</td>
+        <td>{{repo.name}}</td>
+        <td class="td-hover" (click)="copyToClipboard('git clone ' + repo.clone_url)" data-toggle="tooltip" title="Click for copy!">
+          {{repo.clone_url}}</td>
+        <td>{{repo.updated_at | date:'y.MM.dd HH:MM'}}</td>
+        <td>{{repo.private}}</td>
+      </tr>
+    </tbody>
+  </table>
 
-<button class="btn btn-primary">Repok</button>
+</div>
