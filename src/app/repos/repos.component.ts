@@ -25,7 +25,7 @@ export class ReposComponent implements OnInit {
       .toPromise()
       .then(data => {
         this.repos = data;
-        console.log(data);
+        // console.log(data);
       })
       .catch(err => {
         console.log(err);

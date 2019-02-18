@@ -9,6 +9,9 @@ export class TokenService {
 
   constructor() {}
 
+  /**
+   * Makes header for the auth.
+   */
   headerMaker() {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');

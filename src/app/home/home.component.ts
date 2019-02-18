@@ -20,13 +20,16 @@ export class HomeComponent implements OnInit {
     this.AuthService.token = this.token;
     this.getName();
   }
+  /**
+   * Get a username.
+   */
   getName() {
     this.http
       .get(this.uri, { headers: this.AuthService.headerMaker() })
       .toPromise()
       .then(data => {
         this.username = data['login'];
-        console.log(data);
+        // console.log(data);
       })
       .catch(err => {
         console.log(err);

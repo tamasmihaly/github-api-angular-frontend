@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
   }
 
   /**
-   * Get repos
+   * Get userdatas.
    */
   getAll() {
     this.http
@@ -31,6 +31,13 @@ export class ProfileComponent implements OnInit {
         console.log(err);
       });
   }
+
+  /**
+   * After a check, the method modifies a user data. After the program run
+   * an alert message inform you about the success or fail.
+   * @param prop proterty to the modify
+   * @param value value
+   */
   modifyOneUserData(prop, value) {
     if (confirm('Are you sure?')) {
       const updateData = {};
@@ -41,14 +48,17 @@ export class ProfileComponent implements OnInit {
         })
         .toPromise()
         .then(data => {
-          console.log(data);
+          // console.log(data);
           this.getAll();
           alert(`Your ${prop} sucessfully updated to ${value}!`);
         })
         .catch(err => {
           console.log(err);
           alert(`Unsuccessful update!`);
+          this.getAll();
         });
+    } else {
+      this.getAll();
     }
   }
 }
