@@ -20,15 +20,8 @@ export class ReposComponent implements OnInit {
    * Get repos
    */
   getAll() {
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    headers = headers.append(
-      'Authorization',
-      `Bearer ${this.AuthService.token}`
-    );
-    console.log(headers.get('Content-Type'));
     this.http
-      .get(this.uri, { headers })
+      .get(this.uri, { headers: this.AuthService.headerMaker() })
       .toPromise()
       .then(data => {
         this.repos = data;

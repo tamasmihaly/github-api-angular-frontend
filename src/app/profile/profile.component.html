@@ -1,3 +1,38 @@
-<p>
-  profile works!
-</p>
+<div class="container" *ngIf="userDatas">
+  <h1>{{userDatas.login}}'s github account</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="text-center" scope="col">User data name</th>
+        <th class="text-center" scope="col">User data value</th>
+        <th class="text-center" scope="col">Modify</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Location</td>
+        <td><input class="col-12 form-control" type="text" [(ngModel)]="userDatas.location"></td>
+        <td><button (click)="modifyOneUserData('location',userDatas.location)" class="btn btn-primary col-12">Update</button></td>
+      </tr>
+      <tr>
+        <td>Company</td>
+        <td><input class="col-12 form-control" type="text" [(ngModel)]="userDatas.company"></td>
+        <td><button (click)="modifyOneUserData('company',userDatas.company)" class="btn btn-primary col-12">Update</button></td>
+      </tr>
+      <tr>
+        <td>Bio</td>
+        <td><input class="col-12 form-control" type="text" [(ngModel)]="userDatas.bio"></td>
+        <td><button (click)="modifyOneUserData('bio',userDatas.bio)" class="btn btn-primary col-12">Update</button></td>
+      </tr>
+      <tr>
+        <td>Url</td>
+        <td><input class="col-12 form-control" type="text" [(ngModel)]="userDatas.blog"></td>
+        <td><button (click)="modifyOneUserData('blog',userDatas.blog)" class="btn btn-primary col-12">Update</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="container" *ngIf="!userDatas">
+  <h1>Datas are not available!</h1>
+</div>

@@ -1,10 +1,18 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class TokenService {
-  token = "0b6bce611c3430747123bf6a8fc1476e22cf2d51";
+  token = '';
 
   constructor() {}
+
+  headerMaker() {
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    headers = headers.append('Authorization', `Bearer ${this.token}`);
+    return headers;
+  }
 }
