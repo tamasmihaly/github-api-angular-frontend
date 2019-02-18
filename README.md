@@ -1,2 +1,1 @@
-# github-api-angular-frontend
-Small app for github api.
+# Angular frontend for github V3 api.
